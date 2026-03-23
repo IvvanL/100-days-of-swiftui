@@ -23,7 +23,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 7 | Functions, Parameters, Return Values | ✅ |
 | Day 8 | Default Parameters, Throwing Functions | ✅ |
 | Day 9 | Closures | ✅ |
-| Day 10 | Structs, Properties, Methods | ⏳ |
+| Day 10 | Structs, Properties, Methods | 🔄 |
 | Day 11 | Access Control, Static Properties | ⏳ |
 | Day 12 | Classes, Inheritance | ⏳ |
 | Day 13 | Protocols, Extensions | ⏳ |
