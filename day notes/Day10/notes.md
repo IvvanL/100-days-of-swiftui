@@ -7,3 +7,8 @@
 - Mutating methods — needed when a method changes a property inside a struct
 - took a quick test on structs
 - took a quick test on mutating methods
+
+## FINISHED SECOND SECTION OF DAY 10
+- how to compute  property values dynamically
+- did some extra reading on the topic
+- took a short test on computed properties
