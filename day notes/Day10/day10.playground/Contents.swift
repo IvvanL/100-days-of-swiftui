@@ -153,3 +153,102 @@ struct Swordfighter {
 }
 let inigo = Swordfighter(name: "Inigo Montoya")
 
+///How to take action when a property changes
+
+/*
+ -----------------------------------------------------------
+ struct Game {
+    var score = 0
+    didSet {
+        print("Score is now \(score)")
+    }
+  }
+}
+
+var game = Game()
+game.score += 10
+game.score -= 3
+game.score -= 1
+ -----------------------------------------------------------
+ */
+
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value is: \(contacts)")
+            print("New value will be: \(newValue)")
+        }
+        
+        didSet {
+            print("There are now \(contacts.count) contacts")
+            print("Old value was: \(oldValue)")
+        }
+    }
+}
+
+var app = App()
+app.contacts.append("Adrian E")
+app.contacts.append("Allen W")
+app.contacts.append("Ish S")
+
+/// property observers let you run code automatically whenever a propertys value changes
+/// willSet ----- Just before the value changes
+/// didSet ----- Just after the value changes
+
+///BASIC EXAMPLE
+
+var score: Int = 0 {
+    willSet {
+        print("Score is about to change to \(newValue)")
+    }
+    didSet {
+        print("Score changed from \(oldValue) to \(score)")
+    }
+}
+
+// inside willSet, swift gives you newValue - the value its about to become
+// inside didSet, swift gives you oldValue - the value it used to be
+
+/// THE MOST COMMON PATTERN: didSet
+/// --didSet is used more often tha willSet
+
+var lives: Int = 3 {
+    didSet {
+        if lives == 0 {
+            print("Game Over!")
+        }
+    }
+}
+
+lives -= 1 //nothing happens
+lives -= 1 //nothing happens
+lives -= 1 //prints "Game over!"
+
+/// Key Rules to Know
+/// 1. they work on stored properties only, you can use willSet/didSet on computed properties (those use get/set)
+/// 2. they dont fire on initialization, setting a property in ini() does not trigger observers - only subsequent changes do.
+/// 3. you can rename newValue/oldValue
+
+struct BankAccount {
+    var balance: Double = 1000.0 {
+        willSet {
+            print("Balance will change from \(balance) to \(newValue)")
+        }
+        didSet {
+            if balance < 0 {
+                print("Warning: You're overdrawn")
+            }
+            print("Balance changed from \(oldValue) to \(balance)")
+        }
+    }
+}
+
+var account = BankAccount ()
+account.balance = 500.0
+account.balance = -50.0
+
+///When should you use property observers?
+/// The most important reason is convenience: using a property observer means your functionality will be executed whenever the property changes.
+
+///When should you use willSet rather than didSet?
+///most of the time you will be using didSet, because we want to take action after the change has happened so we can update our user interface, save changes, etc
