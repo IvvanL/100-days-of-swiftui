@@ -1,12 +1,11 @@
 # 100-days-of-swiftui
-My progress through Paul Hudson's 100 Days of SwiftUI challenge
 
 My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui) challenge.
 
 ## 👨‍💻 Progress
 
 **Started:** March 2026  
-**Goal:** Complete all 100 days and build/deploy real iOS apps on the app store.
+**Goal:** Complete all 100 days and build/ship real iOS apps on the app store.
 
 ---
 
@@ -23,7 +22,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 7 | Functions, Parameters, Return Values | ✅ |
 | Day 8 | Default Parameters, Throwing Functions | ✅ |
 | Day 9 | Closures | ✅ |
-| Day 10 | Structs, Properties, Methods | 🔄 |
+| Day 10 | Structs, Properties, Methods | ✅ |
 | Day 11 | Access Control, Static Properties | ⏳ |
 | Day 12 | Classes, Inheritance | ⏳ |
 | Day 13 | Protocols, Extensions | ⏳ |
@@ -137,7 +136,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 
 Each day folder contains a `notes.md` with:
 - What I learned
-- Code examples
+- Code examples will be in the playground file
 - Checkpoints
 
 ---
