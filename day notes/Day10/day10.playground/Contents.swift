@@ -252,3 +252,142 @@ account.balance = -50.0
 
 ///When should you use willSet rather than didSet?
 ///most of the time you will be using didSet, because we want to take action after the change has happened so we can update our user interface, save changes, etc
+
+///HOW TO CREATE CUSTOM INITIALIZERS
+/// initializer are special functions inside structs -designed to create initial values  afor all the properties inside the struct
+
+struct Player {
+    let name: String
+    let number: Int
+
+init(name: String) { // no func, no explicit return type
+    self.name = name
+    number = Int.random(in: 1...99)
+    }
+}
+
+let player = Player(name: "Megan R")
+print(player.number)
+
+
+///When would you use self in a method?
+///An initializer is simply the function that runs at creation time to make sure everything gets a value
+///By default, Swift gives structs a memberwise initializer — one that automatically accepts all properties as parameters. But sometimes you want more control over how an object is set up.
+// By far the most common reason for using self is inside an initializer, where you’re likely to want parameter names that match the property names of your type, like this:
+
+struct Student {
+    var name: String
+    var bestFriend: String
+    
+    init(name: String, bestFriend: String) {
+        print("Enrolling \(name) in class...")
+        self.name = name
+        self.bestFriend = bestFriend
+    }
+}
+
+//
+
+// example:
+
+struct  Coffee {
+    var size: String
+    var hasMilk: Bool
+    var price: Double
+    
+    init(size: String) {
+        self.size = size        //caller chooses the size
+        self.hasMilk = false    //default: no milk
+        self.price = 3.50       //always starts at 3.50
+    }
+}
+
+let myCoffee = Coffee(size: "large")
+// mycoffee.hasMilk = false
+// mycoffee.price = 3.50
+
+// The caller only had to say the size. The initializer handled the rest.
+
+self.size = size
+//    ^      ^
+//property   parameter (what was passed in)
+// self.size = property on the struct
+// size(alone) = the value passed in by the caller
+
+// The moment you write any custom init inside a struct, Swift takes away the automatic one. So if you want to keep both, put your custom one in an extension:
+
+struct Coffee {
+    var size: String
+    var hasMilk: Bool
+}
+
+extension Coffee {
+    init(size: String) {        // your custom one
+        self.size = size
+        self.hasMilk = false
+    }
+}
+//now BOTH of these work:
+let a = Coffee(size: "small")                   //custom
+let b = Coffee(size: "small", hasMilk: true)    //original auto one
+
+/// a custom initializer is just a function called init that runs when you create an object, letting you control exactly what values get set -- including providing defaults, doing calculations, or simplifying what the caller has to provide.
+///
+/// real world example:
+///The Scenario
+//When a user signs up, you collect:
+
+//Their username (they choose it)
+//Their email (they provide it)
+//But some things you handle automatically:
+
+//isVerified → always starts as false (they haven't verified email yet)
+//joinDate → always today's date
+//accountLevel → always starts as "basic"
+
+/* Without a custom initializer (bad)
+swiftstruct UserAccount {
+    var username: String
+    var email: String
+    var isVerified: Bool
+    var joinDate: Date
+    var accountLevel: String
+}
+
+// The caller has to set EVERYTHING manually — messy and error-prone
+let user = UserAccount(
+    username: "sarah92",
+    email: "sarah@email.com",
+    isVerified: false,        // easy to forget or set wrong
+    joinDate: Date(),         // caller shouldn't need to worry about this
+    accountLevel: "basic"     // same here
+)
+
+ he caller has to know and set things they shouldn't need to care about. Someone could accidentally pass isVerified: true and bypass your verification system!
+
+ With a custom initializer (good)
+ swiftstruct UserAccount {
+     var username: String
+     var email: String
+     var isVerified: Bool
+     var joinDate: Date
+     var accountLevel: String
+
+     init(username: String, email: String) {
+         self.username = username
+         self.email = email
+         self.isVerified = false       // you control this, not the caller
+         self.joinDate = Date()        // automatically set to right now
+         self.accountLevel = "basic"   // everyone starts basic
+     }
+ }
+
+ // Now creating a user is clean and safe
+ let user = UserAccount(username: "sarah92", email: "sarah@email.com")
+
+ print(user.isVerified)    // false
+ print(user.accountLevel)  // "basic"
+ print(user.joinDate)      // today's date
+
+*/
+

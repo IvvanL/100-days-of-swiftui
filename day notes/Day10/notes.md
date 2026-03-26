@@ -1,4 +1,4 @@
-# Day 10 Notes - WIP
+# Day 10 Notes - Complete
 
 ## FINISHED FIRST SECTION OF DAY 10 - How to create your own structs
 - Created my own structs
@@ -18,3 +18,10 @@
 - when property observers should be used
 - when to use willSet rather than didSet
 - took a short test on property observers
+
+## FINISHED Day 10 completely - How to create custom initializers
+- How to create custom initializers
+- how init works
+- when to use self and not
+- took a short test on both initializers and current instance
+- did some additional reading on initializers and current instance
