@@ -1,6 +1,6 @@
 import Cocoa
 
-//How to limit access to internal data using access control
+//How to limit access to internal data using access control---------------------
 /*
 struct BankAccount {
     var funds = 0
@@ -154,3 +154,97 @@ private(set) -- Dont let anyone outside the struct use this, but allow them to r
  
  The golden rule: make everything private by default, and only open things up when you need to. This is called encapsulation and it's one of the foundations of good software design.
  */
+
+//Static properties and methods---------------------
+
+/* struct School {
+    static var studentCount = 0
+    
+    static func add(student: String) {
+        print("\(student) joined the school")
+        studentCount += 1
+    }
+}
+
+School.add(student: "Taylor Swift")
+print(School.studentCount)
+*/
+  
+// self --- the current value of a struct 55, "Hello", true
+// Self --- the current type of struc Int, String, Bool
+
+struct AppData {
+    static let version = "1.3 beto 22"
+    static let saveFilename = "settings.json"
+    static let homeURL = "https://www,hackingwithswift.com"
+}
+
+struct Employee {
+    let username: String
+    let password: String
+    
+    static let example = Employee(username: "cfederighi", password: "h4irf0rceOne")
+}
+
+// What’s the point of static properties and methods in Swift?
+
+//- one common use for static properties and methods is to store common functionality you use across an entire app.
+//- The core idea: static means the property/method belongs to the type itself, not to any instance of it
+// without static:
+/// struct  School {
+///     var name: String
+/// }
+/// let s = School(name: "Eton") // need an instance to access .name
+///
+/// with static:
+/// struct App {
+/// static let version = "1.0"
+///}
+///App.version // access directly, no instance needed
+
+/// this is useful when the data is shared/global - not unique to each instance
+/// A URL, an app version, an ID — these don't change per instance, so it makes no sense to attach them to one. You just want one copy, always accessible.
+
+
+/* //// struct Unwrap {
+ static let appURL = "https://itunes.apple.com/app/id1440611372"
+ private static var entropy = Int.random(in: 1...1000)
+ 
+ static func getEntropy() -> Int {
+ entropy += 1
+ return entropy
+ }
+ }
+ 
+ ///for the unwrap example above ---
+ /// - appURL - one shared URL, accesible anywhere as Unwrap.appURL
+ /// - entropy - a single shared counter, priovate so nothing can mess with it directly
+ /// - getEntropy() - the only way to reaqd entropy, and it nudges the value each time to avoid repeats
+ 
+ /// ENUM TIP
+ /// Since you never need to create an instance of Unwrap, Paul suggests using an enum with no cases instead of a struct. This prevents anyone from accidentally doing let u = Unwrap():
+ 
+ /// enum Unwrap {
+ static let appURL = "https://itunes.com"
+ }
+ 
+ /// same behaviour, but now the type is "instance-proof" - its only purpose is to hold shared static data
+ 
+ ///                     can it change?
+ /// static let ->           NO
+ /// static var ->           YES
+ /// let        ->           NO
+ /// var        ->           YES
+ 
+ /// static only means "BELONGS TO THE TYPE, NOT AN INSTANCE"
+ 
+ /// summary: STRUCTS
+ /// - Create own struct using the struct keyword
+ /// - structs can have their own properties and methods
+ /// - if a method modifies properties of its stuct, it must be mutating
+ /// - structs can have stored properties and computed properties
+ /// - we can attach didSet and willSet property observers to properties
+ /// - swift generates an initializer for all structs using their property names
+ /// - you can create custom initializers to override swifts default
+ /// - access control limits what code can use properties and methods
+ /// - static properties and methods are attached directly to a struct
