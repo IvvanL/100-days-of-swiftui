@@ -24,7 +24,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 9 | Closures | ✅ |
 | Day 10 | Structs, Properties, Methods | ✅ |
 | Day 11 | Access Control, Static Properties | ✅ |
-| Day 12 | Classes, Inheritance | ⏳ |
+| Day 12 | Classes, Inheritance | 🔄 |
 | Day 13 | Protocols, Extensions | ⏳ |
 | Day 14 | Optionals, Nil Coalescing | ⏳ |
 | Day 15 | Swift Review | ⏳ |
