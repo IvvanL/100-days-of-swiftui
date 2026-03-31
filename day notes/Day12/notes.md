@@ -1,4 +1,4 @@
-# Day 12 Notes - Classes WIP
+# Day 12 Notes - Classes, Inheritance WIP
 
 ## Finished sections 1 and 2 of day 12
 - how to create your own classes
