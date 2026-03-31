@@ -82,3 +82,49 @@ novall.printSummary()
 ///**Which classes should be declared as final?**
 /// - final calsses are ones that cannot be inherited from, which means its not possible for users of your code to add functionality or change what they have.
 /// - final classes is not the default-- you must opt in to this behavior by adding the final keyword to your class
+
+
+///**3. how to add initializers for classes**
+
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConvertible: Bool
+    
+    init(isElectric: Bool, isConvertible: Bool) {
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+    }
+//if a child class doest not have any of its own initializers, it will inherit the initializers of its parent class.
+}
+
+let teslaX = Car(isElectric: true, isConvertible: false)
+
+///**4. how to copy classes classes**
+/// In Swift, all copies of a class instance share the same data, meaning that any changes you make to one copy will automatically change the other copies.
+
+class User {
+    var username = "Anonymous"
+    
+    func copy() -> User {
+        let user = User()
+        user.username = username
+        return user
+    }
+}
+
+var user1 = User()
+var user2 = user1.copy()
+user2.username = "Taylor"
+
+print(user1.username)
+print(user2.username)
+
+///**Why do copies of a class share their data?**
+///
