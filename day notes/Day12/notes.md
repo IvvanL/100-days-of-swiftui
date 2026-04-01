@@ -15,3 +15,8 @@
 - how to copy classes
 - why copies of a class share their data
 - took a short test on copying objects
+
+## Finished section 5 of day 12
+- how to create a deinitializer
+- differences between why structs dont have deinit and classes do
+- took a short test on deinit

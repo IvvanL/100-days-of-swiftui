@@ -109,7 +109,7 @@ let teslaX = Car(isElectric: true, isConvertible: false)
 ///**4. how to copy classes classes**
 /// In Swift, all copies of a class instance share the same data, meaning that any changes you make to one copy will automatically change the other copies.
 
-class User {
+/* class User {
     var username = "Anonymous"
     
     func copy() -> User {
@@ -125,6 +125,101 @@ user2.username = "Taylor"
 
 print(user1.username)
 print(user2.username)
-
+*/
 ///**Why do copies of a class share their data?**
+///- behaviors of its classes and structs differ when they are copied: copies of the same class share their underlying data, meaning that changing one changes them all, whereas structs always have their own unique data, and changing a copy does not affect the others
+///- structs -> value types
+///- classes -> reference types
+
+///**5. How to create a deinitializer for a class**
+/// 1. you dont use func with deinitialiZers
+/// 2. deinitializers can never take parameters or return data
+/// 3. deinitializers run when the last copy of a class instance is destroyed
+/// 4. we never call deinitializers directly
+/// 5. structs dont have deinitializers
+
+class User {
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+        print("User \(id): I'm Alive!")
+    }
+    
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+
+for i in 1...3 {
+    let user = User(id: i)
+    print("user \(user.id): I'm in control!")
+}
+
+/// Rule     --------------------- Detail
+/// Only for classes         -> structs and enums dont have deinit
+/// no parameters           -> you cant pass anything into deinit
+/// called automatically   -> swift handles it, you never call deinit yourself
+/// one per class             -> you can only have a single deinit
 ///
+/// whats it used for?
+/// cleanup tasks before the object disappears, for example:
+///
+/// class FileManager {
+///     deinit {
+///     closeFile()       // close an open file
+///     saveData()     // save any unsaved data
+///     disconnect()  // close a network connection
+///
+///real world example:
+///Chat App — Active Call Screen
+/*
+ ///class CallSession {
+ var participant = ""
+ var callDuration = 0
+ 
+ init(participant: String) {
+ self.participant = participant
+ print("Call started with \(participant)")
+ // connect to server
+ // turn on microphone
+ // start camera
+ }
+ 
+ deinit {
+ print("Call ended")
+ disconnectFromServer()   // drop the connection
+ turnOffMicrophone()      // release mic
+ turnOffCamera()          // release camera
+ saveCallToHistory()      // log the call duration
+ }
+ }
+ 
+ How it Plays Out
+ 
+ var call: CallSession? = CallSession(participant: "Mom")
+ // "Call started with Mom"
+ // microphone on, camera on, server connected
+ 
+ // ... user is on the call ...
+ 
+ call = nil
+ // user hangs up
+ // "Call ended"
+ // mic off, camera off, server disconnected, call logged
+ 
+ without deinit the app could end up with some problems:
+ 
+ forgotten cleanup                     consequence
+ - mic not released         ->         other apps cant use the mic
+ - server not disconnected  ->         battery drain, data usage
+ - call not saved           ->         missing chat history
+*/
+
+///**Why do classes have deinitializers and structs don’t?**
+/// structs dont have deinitializers
+/// Behind the scenes Swift performs something called automatic reference counting, or ARC. ARC tracks how many copies of each class instance exists: every time you take a copy of a class instance Swift adds 1 to its reference count, and every time a copy is destroyed Swift subtracts 1 from its reference count. When the count reaches 0 it means no one refers to the class any more, and Swift will call its deinitializer and destroy the object.
+
+/// he simple reason for why structs don’t have deinitializers is because they don’t need them: each struct has its own copy of its data, so nothing special needs to happen when it is destroyed.
+
+///**6.How to work with variables inside classes**
