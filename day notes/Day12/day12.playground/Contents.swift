@@ -137,7 +137,7 @@ print(user2.username)
 /// 3. deinitializers run when the last copy of a class instance is destroyed
 /// 4. we never call deinitializers directly
 /// 5. structs dont have deinitializers
-
+/*
 class User {
     let id: Int
     
@@ -155,7 +155,7 @@ for i in 1...3 {
     let user = User(id: i)
     print("user \(user.id): I'm in control!")
 }
-
+*/
 /// Rule     --------------------- Detail
 /// Only for classes         -> structs and enums dont have deinit
 /// no parameters           -> you cant pass anything into deinit
@@ -223,3 +223,48 @@ for i in 1...3 {
 /// he simple reason for why structs don’t have deinitializers is because they don’t need them: each struct has its own copy of its data, so nothing special needs to happen when it is destroyed.
 
 ///**6.How to work with variables inside classes**
+
+class User {
+    var name = "Paul"
+}
+
+var user = User()
+user.name = "Taylor"
+user = User()
+print(user.name)
+
+/// constant class, constant property
+///     + signpost thast always points to the same user, who always has the same name
+/// constant class, variable property
+///     + signpost that always points to the same user, but their name can change
+/// variable class, constant property
+///     + signpost that can point to different users, but their names never change
+/// variable class, variable property
+///     + signpost that can point to different users, and those users can also change their names
+///
+///  STRUCT - Int, Int, Bool, String, Array<String>, etc
+///     + a struct holds all its data directly inside itself
+///
+///  CLASSES - can change freely without the class changing
+///
+///  **Why can variable properties in constant classes be changed?**
+///  - difference between structs and classes is the way they handle mutability of properties:
+///     + variable classes can have variable properties changed
+///     + constant classes can have variable properties changed
+///     + variable structs can have variable properties changed
+///     + constant structs cannot have variable properties changed
+///
+///  - when we change a property in a struct, we are changing the entire struct
+///  - if changing one part of a struct effectively means destroying and recreaqting the entire struct, you can see why constant structs dont allow their variable properties to be change - it would mean destroying and recreating something that is supposed to be constant, which isnt possible
+///
+///  - classes - you can change any part of their properties without having to destroy and recreate the value. as a result, constant classes can have their variable properties changed freely.
+///
+///  - let on a class -> locks the reference, objest inside is still mutable
+///  - let on a struct -> locks everything, the whole value is frozen
+///
+///  **SUMMARY FOR DAY 12 - CLASSES**
+///  - classes can inherit from other classes, so they get access to the properties and methods of their parent
+///  - swift doesnt generate a memberwise initializer for classes
+///  - copies of a class instance point to the same instance
+///  - classes run deinitializers when the last copy of an instance is destroyed
+///  - you can change variable properties inside constant class instances

@@ -1,4 +1,4 @@
-# Day 12 Notes - Classes, Inheritance WIP
+# Day 12 Notes - Complete
 
 ## Finished sections 1 and 2 of day 12
 - how to create your own classes
@@ -20,3 +20,10 @@
 - how to create a deinitializer
 - differences between why structs dont have deinit and classes do
 - took a short test on deinit
+
+## Finished section 6 - day 12 complete
+- learned how to work with variables inside classes 
+- learned the differences between structs and classes
+- learned the reasons why variable properties in constant classes can be changed
+- took a short test on mutability
+- went over day 12 notes
