@@ -98,3 +98,35 @@ if let number = number {
 ///- As it does have a value (it’s “Taylor”), that value will be taken out of the optional and placed into a new username constant.
 ///- The condition is then considered true, and it will print “Username is Taylor”.
 ///- So, if let is a fantastically concise way of working with optionals, taking care of checking and extracting values all at once.
+
+///-----------------------------------------------------------------------------
+
+///**Section 2.How to unwrap optionals with guard**
+
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+        return
+    }
+    
+    print("\(number) x \(number) is \(number * number)")
+}
+
+var myVar: Int? = 3
+
+if let unwrapped = myVar {
+    // Run if myVar has a value inside
+}
+
+guard let unwrapped = myVar else {
+    //run if myVar doesnt have a value inside
+}
+
+/// - swift requires you to use return if a guard check fails
+/// - if the optional you're unwrapping has a value, you can use it after the guard code finishes
+
+///**When to use guard let rather than if let**
+///- both "if let" and "guard let" safely unwrap optionals, but they handle failure differently
+///      + IF LET - wraps the success code inside a block. if the optional is nil, the blocj is skipped and the function keeps going. the unwrapped value only exists inside that block
+///      + GUARD LET - flips this around. it says: "Check the condition up front - if it fails, bail out immediately (with a return). The unwrapped value then lives in the outer scope, available for everything that follows
+/// - the practical rule is use IF LET when you just need to unwrap something and prefer GUARD LET when youre validating preconditions at the top of a function. GUARD LET keeps your "happy path" - the code that runs when everything works - at the top level instead of buried inside nested blocks
