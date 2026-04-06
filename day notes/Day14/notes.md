@@ -6,3 +6,8 @@
 - why swift has optionals
 - why we have to unwrap optionals
 - took a short test on unwrapping optionals
+
+## Day 14 - section 2 completed
+- how to unwrap optionals with guard
+- when to use guard let rather than if let
+- took a short test on unwwrapping with guard
