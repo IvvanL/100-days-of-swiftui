@@ -11,3 +11,8 @@
 - how to unwrap optionals with guard
 - when to use guard let rather than if let
 - took a short test on unwwrapping with guard
+
+## Day 14 - section 3 completed
+- how to unwrap optionals with nil coalescing
+- when we should use nil coalescing
+- took a short test on nil coalescing

@@ -44,7 +44,7 @@ var arr1 = [0]
 var arr2 = [Int]()
 var arr3: [Int]? = nil
 */
-
+/*
 func square(number: Int) -> Int {
     number * number
 }
@@ -59,10 +59,9 @@ if let number = number {
     print(square(number: number))
     
     
-    
     //valid
 }
-
+*/
 /// **why does swift have optionals?**
 
 /// - swift optionals allow us to represent the absence of some data - a string that isnt just empty but literally doesnt exist
@@ -102,7 +101,7 @@ if let number = number {
 ///-----------------------------------------------------------------------------
 
 ///**Section 2.How to unwrap optionals with guard**
-
+/*
 func printSquare(of number: Int?) {
     guard let number = number else {
         print("Missing input")
@@ -121,7 +120,7 @@ if let unwrapped = myVar {
 guard let unwrapped = myVar else {
     //run if myVar doesnt have a value inside
 }
-
+*/
 /// - swift requires you to use return if a guard check fails
 /// - if the optional you're unwrapping has a value, you can use it after the guard code finishes
 
@@ -130,3 +129,41 @@ guard let unwrapped = myVar else {
 ///      + IF LET - wraps the success code inside a block. if the optional is nil, the blocj is skipped and the function keeps going. the unwrapped value only exists inside that block
 ///      + GUARD LET - flips this around. it says: "Check the condition up front - if it fails, bail out immediately (with a return). The unwrapped value then lives in the outer scope, available for everything that follows
 /// - the practical rule is use IF LET when you just need to unwrap something and prefer GUARD LET when youre validating preconditions at the top of a function. GUARD LET keeps your "happy path" - the code that runs when everything works - at the top level instead of buried inside nested blocks
+
+///----------------------------------------------------------------------------
+
+///**Section 3.How to unwrap optionals with nil coalescing**
+
+let captains = [
+    "Enterprise" : "Picard",
+    "Voyaher" : "Janeway",
+    "Defiant" : "Sisko"
+]
+
+let new = captains[ "Serenity", default: "N/A"]
+
+let tvShows = ["Archer", "Babylon 5", "Ted Lasso"]
+let favorite = tvShows.randomElement() ?? "None"
+
+struct Book {
+    let title: String
+    let author: String?
+}
+
+let book = Book(title: "beowulf", author: "nil")
+let author = book.author ?? "Anonymous"
+print(author)
+
+let input = ""
+let number = Int(input) ?? 0
+print(number)
+
+/// **When should you use nil coalescing in Swift?**
+
+///- nil coalescing - is like saying "Go find my toy, but if its not there, just give me this other toy instead so im never left with nothing"
+///-example:
+///let savedData = first() ?? second() ?? ""
+/// ^^^^^^^ the code above is saying, check my room for the toy. not there? check the living room. stil not there? ok, just use this backup toy
+/// - a dictionary in coding is like a scoreboard with names and scores. if you ask someones score who isnt on the board, you'd get nothing - but with ?? you can say "if theyre not on the board, just give me a 0"
+/// let crusherScore = scores["Crusher"] ?? 0
+/// ?? makes sure you always end up with something real, never nothing
