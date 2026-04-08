@@ -16,3 +16,8 @@
 - how to unwrap optionals with nil coalescing
 - when we should use nil coalescing
 - took a short test on nil coalescing
+
+## Day 14 - section 4 completed
+- how to handle multiple optionals using optional chaining
+- why optional chaining is important
+- optional chaining makes code cleaner and safer compared to manually unwrapping each optional

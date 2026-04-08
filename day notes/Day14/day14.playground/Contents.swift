@@ -133,7 +133,7 @@ guard let unwrapped = myVar else {
 ///----------------------------------------------------------------------------
 
 ///**Section 3.How to unwrap optionals with nil coalescing**
-
+/*
 let captains = [
     "Enterprise" : "Picard",
     "Voyaher" : "Janeway",
@@ -157,6 +157,7 @@ print(author)
 let input = ""
 let number = Int(input) ?? 0
 print(number)
+*/
 
 /// **When should you use nil coalescing in Swift?**
 
@@ -167,3 +168,42 @@ print(number)
 /// - a dictionary in coding is like a scoreboard with names and scores. if you ask someones score who isnt on the board, you'd get nothing - but with ?? you can say "if theyre not on the board, just give me a 0"
 /// let crusherScore = scores["Crusher"] ?? 0
 /// ?? makes sure you always end up with something real, never nothing
+
+///----------------------------------------------------------------------------
+
+///**Section 4.How to handle multiple optionals using optional chaining**
+
+let names = ["Arya", "Bran", "Robb", "Sansa"]
+let chosen = names.randomElement()?.uppercased() ?? "no one"
+print("next in line: \(chosen)")
+//"if the optional has a value inside, unwrap it then"
+
+//example:
+// we have an optional instance of a Book struct
+// the book might have an author, or it might be anonymous
+// if it has an author, attempt to read the first letter
+// if the first letter is there, uppercase it
+
+struct Book {
+    let title: String
+    let author: String?
+}
+
+var book: Book? = nil
+let author = book?.author?.first?.uppercased() ?? "a"
+print(author)
+
+/// **Why is optional chaining so important?**
+// - Optional chaining in swift lets you safely access properties or methods through multiple layers of optionals in a single line. If any part of the chain is nil , the whole expression returns nil instead of crashing.
+// example:
+// let names = ["Vincent": "van Gogh", "Pablo": "Picasso", "Claude": "Monet"]
+// let surnameLetter = names["Vincent"]?.first?.uppercased()
+
+//Returning to our surname example, we could automatically return “?” if we were unable to read the first letter of someone’s surname:
+
+// let surnameLetter = names["Vincent"]?.first?.uppercased() ?? "?"
+
+// - optional chaining uses ? to safely traverse multiple optional layers in one expression
+// - if any layers is nil, the entire expression short-ciorcuits to nil
+// - combine with ?? (nil coalescing) to provide a default fallback value
+// - makes code cleaner and safer compared to manually unwrapping each optional
