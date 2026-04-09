@@ -1,4 +1,4 @@
-# Day 14 Notes - Optionals - WIP
+# Day 14 Notes - Optionals - Completed
 
 ## Day 14 - section 1 completed
 - what optionals are
@@ -21,3 +21,10 @@
 - how to handle multiple optionals using optional chaining
 - why optional chaining is important
 - optional chaining makes code cleaner and safer compared to manually unwrapping each optional
+
+## Day 14 - section 5 completed
+- how to handle function failure with optionals
+- when optional try should be used
+- why optional error handling is useful
+- took a short tesdt on Optional try
+

@@ -207,3 +207,69 @@ print(author)
 // - if any layers is nil, the entire expression short-ciorcuits to nil
 // - combine with ?? (nil coalescing) to provide a default fallback value
 // - makes code cleaner and safer compared to manually unwrapping each optional
+
+///----------------------------------------------------------------------------
+
+///**Section 5.How to handle function failure with optionals**
+
+enum UserError: Error {
+    case badID, networkFailed
+}
+
+func getUser(id: Int) throws -> String {
+    throw UserError.networkFailed
+}
+
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")
+}
+
+let user = (try? getUser(id: 23)) ?? "anonymous"
+print(user)
+
+/*
+- try? lets you call a function that might fail, and turns the result into an optional instead of forcing you to handle the error.
+- The three possible ways to call a throwing function:
+ + try — you handle any errors with do/catch
+ + try! — you're certain it won't fail (crashes if it does — use rarely!)
+ + try? — you don't care why it failed, just whether it worked
+
+ What try? does:
+- If the function succeeds → you get the return value
+- If the function fails → you get nil
+- You lose the specific error details, but often that's fine
+
+ Three common uses:
+- With guard let — exit a function early if something fails
+- With nil coalescing (??) — use a fallback value if it fails, e.g. (try? getUser(id: 23)) ?? "Anonymous"
+- When calling a function that returns nothing and you truly don't care if it worked (e.g., logging, analytics)
+
+
+ *** use try? when you only care about success vs. failure, not the reason for failure. It keeps your code clean and avoids the crash risk of try! */
+
+///**When should you use optional try?**
+///-If you want to run a function and care only that it succeeds or fails - you dont need to disgtinguish between the various reasons why it might fail - then using optional try is a gereat fit, because you can boil the whole thing down to "did it work?"
+///- example:
+///- rather than writing this:
+/// do {
+///     let result = try runRiskyFucntion()
+///     print(result)
+/// } catch {
+/// // it failed!
+/// }
+
+/// you can instead write this:
+/// if let result = try? runRiskyFucntion() {
+///     print(result)
+/// }
+
+
+/// summary: OPTIONALS
+///
+///- optionals let us represent the absence of data, which means were able to say "this integer has no value" - thats different from a fixed number such as 0
+///- Everything that isnt optional definitely has a value inside, even if thats just an empty string
+///- unwrapping an optional is the process of looking inside a box to see what it contains: if theres a value inside its sent back for use, otherwise there will be nil inside
+///- we can use if let to run some code if the optional has a value, or guard let to run some code if the optional doesnt have a value - but with guard we must alwauys exit the function afterwards
+///- the nil coalescing operator, ??, unwraps and returns an optionals value, or uses a default value instead
+///- optional chaining lets us read an optional inside another optional with a convenient syntax
+///- if a function might throw errors you can convert it into an optional using try? - youll either get back the functions return value or nil if an error is thrown
