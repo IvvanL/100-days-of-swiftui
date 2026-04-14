@@ -9,30 +9,7 @@ import SwiftUI
 
 struct ContentView: View { //basic protocol
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Text("Hello World")
-                }
-                
-                Section {
-                    Text("Hello World")
-                    Text("Hello World")
-                    Text("Hello World")
-                }
-                
-                Section {
-                    Text("Hello World")
-                    Text("Hello World")
-                    Text("Hello World")
-                    Text("Hello World")
-                    Text("Hello World")
-                    Text("Hello World")
-                }
-            }
-            .navigationTitle("SwiftUI")
-            .navigationBarTitleDisplayMode(.inline)
-        }
+        Text("Hello World")
     }
 }
 
