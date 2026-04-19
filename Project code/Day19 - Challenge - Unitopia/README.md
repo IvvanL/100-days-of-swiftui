@@ -9,8 +9,8 @@ A minimal time unit converter app built with SwiftUI as part of the 100 Days of 
 - Built entirely with SwiftUI
 
 ## Screenshots
-![Unitopia Light Mode](screenshot1.png)
-![Unitopia Dark Mode](screenshot2.png)
+![Unitopia Light Mode](Screenshot1.png)
+![Unitopia Dark Mode](Screenshot2.png)
 
 ## How It Works
 Enter any number of seconds, pick your target unit, and the result updates instantly.
