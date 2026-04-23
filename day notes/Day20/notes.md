@@ -7,3 +7,4 @@
 - created a 3 x 3 grid having 3 Vstacks nested inside an HStack
 - learned about background color, sizing colors, built in colors, safe area and materials 
 - learned about linear, radial, angular and .gradient modifier
+- learned about BUTTONS, IMAGES and combining text + images

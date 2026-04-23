@@ -45,7 +45,8 @@ import Cocoa
  + semantic colors like Color.primary and Color.secondary adapt to light/dark mode automatically.
  + Custom colors: Color(red:green:blue:) with values 0-1.
  - Safe area - colors stop at the safe area by default (dynamic island, home indicator). Use .ignoresSafeArea() to extend to screen edges - fine for decorative content, never for important content.
- - Materials(frosted glass) - pass a material like .ultraThinMaterial to .background() tocreate a frosted glass effect. Adapts to light/dark mode. Paired with .foregroundStyle(.secondary), text gets vibrancy - subtly picking up background colors to stay legible
+ - Materials(frosted glass) - pass a material like .ultraThinMaterial to .background() tocreate a frosted glass effect. Adapts to light/dark mode. Paired with .foregroundStyle(.secondary), text gets vibrancy
+ - subtly picking up background colors to stay legible
  
  **GRADIENTS**
  
@@ -88,3 +89,53 @@ import Cocoa
  
  - Types 1–3 support gradient stops and work as standalone views or modifiers
  - Type 4 is automatic and subtle — great for quick design polish
+ 
+ **BUTTONS AND IMAGES**
+ 
+ import SwiftUI
+ 
+ struct ContentView: View {
+ var body: some View {
+ VStack {
+ Button("Button 1") {}
+ .buttonStyle(.bordered)
+ 
+ Button("Button 2", role: .destructive) {}
+ .buttonStyle(.bordered)
+ 
+ Button("Button 3") {}
+ .buttonStyle(.borderedProminent)
+ 
+ Button("Button 4", role: .destructive) {}
+ .buttonStyle(.borderedProminent)
+ }
+ }
+ }
+ 
+ func executeDelete(){
+ print("Now deleting...")
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ BUTTONS
+ - basic button Button("Title") { action } or reference a function with action:
+ - add a role (ex. .destructive) to adjust visual appearance and accessibility
+ - built-in styles: .bordered, .borderedProminent - customize color with .tint()
+ - custom label button: use a trailing label: closure with any view inside
+ 
+ IMAGES
+ - Image("name") - loads a custom asset
+ - Image(decorative: "name") - loads asset, skipped by screen reader
+ - Image(systemName: "name" - loads an SF Symbols icon
+ 
+ COMBINING TEXT + IMAGE
+ - SHort form: Button("Edit", systemImage: "pencil") { action }
+ - custom styled: use Label("Edit", systemImage: "pencil") inside a label: closure
+ - swiftUI auto-decides whether to show icvon, text, or both based on content
+ 
+ TIPS
+ - give iomages clearn names for accessibility, or use Image(decorative:) if they're redundant
+ - avoid overusing .borderedProminent - when everything is prominent, nothing is

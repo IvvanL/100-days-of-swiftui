@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("YOUR CONTENT")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundStyle(.white)
-            .background(.red.gradient)
+        Button {
+            print("Button was tapped")
+        } label: {
+            Label("Edit", systemImage: "pencil")
+                .padding()
+                .foregroundStyle(.white)
+                .background(.red)
+        }
     }
 }
-        
+    func executeDelete(){
+        print("Now deleting...")
+    }
+
 #Preview {
     ContentView()
 }
