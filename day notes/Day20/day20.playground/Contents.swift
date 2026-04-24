@@ -139,3 +139,81 @@ import Cocoa
  TIPS
  - give iomages clearn names for accessibility, or use Image(decorative:) if they're redundant
  - avoid overusing .borderedProminent - when everything is prominent, nothing is
+ 
+ 
+ ** SHOWING ALERT MESSAGES **
+ 
+ import SwiftUI
+ 
+ struct ContentView: View {
+ @State private var showingAlert = false
+ 
+ var body: some View {
+ Button("Show alert") {
+ showingAlert = true
+ }
+ .alert("Important message!", isPresented: $showingAlert) {
+ Button("OK") {}
+ }
+ }
+ }
+ func executeDelete(){
+ print("Now deleting...")
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ or a different example
+ 
+ import SwiftUI
+ 
+ struct ContentView: View {
+ @State private var showingAlert = false
+ 
+ var body: some View {
+ Button("Show alert") {
+ showingAlert = true
+ }
+ .alert("Important message!", isPresented: $showingAlert) {
+ Button("Delete", role: .destructive) {}
+ Button("Cancel", role: .cancel) {}
+ } message: {
+ Text("please read this")
+ }
+ }
+ }
+ func executeDelete(){
+ print("Now deleting...")
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ - alerts are state-driven - instead of calling a show method, you bind a boolean to control visibility
+ 
+ - basic setup:
+ 
+ @State private var showingAlert = false
+ 
+ Button("Show Alert") { showingAlert = true }
+ .alert("Title", isPresented: $showingAlert) {
+ Button("OK") { }  // empty closure is fine; any button auto-dismisses
+ }
+ 
+ - key points:
+ + $showingAlert is a two-way binding - SwiftUI resets it to false on dismiss
+ + The .alert() modifier can be attached anywhere in the view hierarchy
+ + Alert buttons can have roles: .destructive or .cancel
+ + Add a message with a trailing message: closure
+ 
+ ex with message + multiple buttons:
+ 
+ .alert("Important message", isPresented: $showingAlert) {
+     Button("Delete", role: .destructive) { }
+     Button("Cancel", role: .cancel) { }
+ } message: {
+     Text("Please read this.")
+ }

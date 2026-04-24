@@ -1,4 +1,4 @@
-# Day 20 Notes - Project 2: Guess the Flag, Part 1 WIP
+# Day 20 Notes - Project 2: Guess the Flag, Part 1 Complete
 
 - In this second SwiftUI project we’re going to be building a guessing game that helps users learn some of the many flags of the world.
 - introduce you to whole range of new SwiftUI functionality: stacks, buttons, images, alerts, asset catalogs, and more.
@@ -8,3 +8,7 @@
 - learned about background color, sizing colors, built in colors, safe area and materials 
 - learned about linear, radial, angular and .gradient modifier
 - learned about BUTTONS, IMAGES and combining text + images
+- learned about showing alert messages
+    + roles: .destructive or .cancel
+    + message: closure
+    + $showingAlert - two-way binding
