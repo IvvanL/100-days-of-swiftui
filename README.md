@@ -33,8 +33,8 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 18 | Project 1 - WeSplit (Part 3) | ✅ |
 | Day 19 | Challenge Day | ✅ |
 | Day 20 | Project 2 - Guess the Flag (Part 1) | ✅ |
-| Day 21 | Project 2 - Guess the Flag (Part 2) | ⏳ |
-| Day 22 | Project 2 - Guess the Flag (Part 3) | ⏳ |
+| Day 21 | Project 2 - Guess the Flag (Part 2) | ✅ |
+| Day 22 | Project 2 - Guess the Flag (Part 3) | 🔄 |
 | Day 23 | Project 3 - Views and Modifiers (Part 1) | ⏳ |
 | Day 24 | Project 3 - Views and Modifiers (Part 2) | ⏳ |
 | Day 25 | Milestone: Projects 1-3 | ⏳ |
