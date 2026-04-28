@@ -4,3 +4,4 @@
 - why SwiftUI uses structs for views
 - what is behind the main SwiftUI view
 - why modifier order matters
+- why swiftUI uses Some View for its view type

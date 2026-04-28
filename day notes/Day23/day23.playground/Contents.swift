@@ -65,7 +65,26 @@ import Cocoa
  VS
  
  Button("Hello")
-     .frame(200x200)    // expands first
-     .background(.red)  // now colors the full 200x200 area
-
-- Key Takeaway: Modifier order = rendering order. Always think about what exists at the time each modifier is applied
+ .frame(200x200)    // expands first
+ .background(.red)  // now colors the full 200x200 area
+ 
+ - Key Takeaway: Modifier order = rendering order. Always think about what exists at the time each modifier is applied
+ 
+ 
+ ** WHY DOES SWWIFTUI USE "SOME VIEW" FOR ITS VIEW TYPE **
+ 
+ What it is: an opaque return type - "one object conforming to view, but i dont need to specify which"
+ 
+ - why not just view?
+ + the view protocol has an associated type (a "hole" that must be filled with a concrete type)
+ + writing var body: view is illegal, you need something specific like var body: Text - or some view to let the compiler figure it out.
+ 
+ - 2 reasons why it exists
+ 1) performance - swiftUI tracks view changes to update the UI efficiently. without type info, it would have to rebuild everything from scratch on every change
+ 2) Handles complex types - chaining modifiers creates deeply nested ModifiedContent types. some view lets you avoid writing those out explicitly
+ 
+ - How multiple views are handled
+ + a VStack with multiple children silently wraps them in a TupleView (ex. TupleView<(Text, Text)>
+ + The body property is implicitly annotated with @viewbuilder, which does the same wrapping automatically when you return multiple views without a stack
+ 
+ 
