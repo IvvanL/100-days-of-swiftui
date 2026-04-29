@@ -87,4 +87,30 @@ import Cocoa
  + a VStack with multiple children silently wraps them in a TupleView (ex. TupleView<(Text, Text)>
  + The body property is implicitly annotated with @viewbuilder, which does the same wrapping automatically when you return multiple views without a stack
  
+ ** CONDITIONAL MODIFIERS **
  
+ - Use the ternary operatot to apply modifiers conditionally, rather than if/else blocks
+ - Syntax reminder (WTF): What do you want to check -> true -> false
+ 
+ import SwiftUI
+
+ struct ContentView: View {
+     @State private var useRedText = false
+     
+     var body: some View {
+         Button("Hello, world!") {
+             useRedText.toggle()
+         }
+         .foregroundStyle(useRedText ? .red : .blue)
+     }
+ }
+
+ #Preview {
+     ContentView()
+ }
+ 
+ - why not if/else?
+ + when you use an if/else to return different views, SwiftUI treats them as two separate views - destroying one and creating the other on each toggle
+ + the ternary operator keeps it as one view with a changing property, which is more efficient.
+ 
+ - rule of thumb: Prefer ternary over if/elswe for conditional modifiers whenever possible
