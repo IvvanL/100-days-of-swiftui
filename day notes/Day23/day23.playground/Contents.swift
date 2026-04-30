@@ -93,20 +93,20 @@ import Cocoa
  - Syntax reminder (WTF): What do you want to check -> true -> false
  
  import SwiftUI
-
+ 
  struct ContentView: View {
-     @State private var useRedText = false
-     
-     var body: some View {
-         Button("Hello, world!") {
-             useRedText.toggle()
-         }
-         .foregroundStyle(useRedText ? .red : .blue)
-     }
+ @State private var useRedText = false
+ 
+ var body: some View {
+ Button("Hello, world!") {
+ useRedText.toggle()
  }
-
+ .foregroundStyle(useRedText ? .red : .blue)
+ }
+ }
+ 
  #Preview {
-     ContentView()
+ ContentView()
  }
  
  - why not if/else?
@@ -114,3 +114,58 @@ import Cocoa
  + the ternary operator keeps it as one view with a changing property, which is more efficient.
  
  - rule of thumb: Prefer ternary over if/elswe for conditional modifiers whenever possible
+ 
+ 
+ ** ENVIRONMENT MODIFIERS **
+ 
+ import SwiftUI
+ 
+ struct ContentView: View {
+ 
+ var body: some View {
+ VStack {
+ Text("Gryffindor")
+ .blur(radius: 0)
+ Text("Hufflepuff")
+ Text("Ravenclaw")
+ Text("Slytherin")
+ }
+ .blur(radius: 1)
+ }
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ - are applied to a container( ex. VStack) that automatically propagate to all child views.
+ - child views can override an environtment modifier with their own value - the childs version takes priority
+ 
+ VStack {...}
+ .font(.title) // applies to all children , but children can overrride
+ 
+ - regular modifiers (like .blur() are additive - a child views version stacks on top of the parents rather than reaplcing it
+ - theres not definitive list of which modifiers are "environment" vs "regular" - you have to check the docs case by case
+ - use environment modifiers to set defaults across many views at once; expect child overrides to work for environment modifiers but not for regular ones
+ 
+ ** VIEWS AS PROPERTIES **
+ 
+ What it is:
+ - storing views as properties on your ContentView struct to keep body cleaner and avoid repetition
+ 
+ Stored property:
+ - simple but limited - cant reference other stored properties
+ 
+ let motto1 = Text("Draco dormiens")
+ 
+ computed proprety:
+ - more flexible and you can apply modifiers at the call site
+ 
+ var motto1: some View { Text("Draco dormien") }
+ 
+ Returning multiple views from a computed property - 3 options:
+ - wrap in a stack (VStack, HStack) - use when layout matters
+ - wrap in a group - use when you want the caller to decide layout
+ - add @ViewBuilder - mirrors how body works, generally preferred
+ 
+ when to use this pattern: Great for breaking up complex views, but if properties start  getting very large, thats a sign the view itseld should be split into separate structs

@@ -5,3 +5,5 @@
 - what is behind the main SwiftUI view
 - why modifier order matters
 - why swiftUI uses Some View for its view type
+- went over conditional modifiers and environmental modifiers
+- went over views as properties
