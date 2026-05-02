@@ -169,3 +169,101 @@ import Cocoa
  - add @ViewBuilder - mirrors how body works, generally preferred
  
  when to use this pattern: Great for breaking up complex views, but if properties start  getting very large, thats a sign the view itseld should be split into separate structs
+ 
+ ** VIEW COMPOSITION **
+ 
+ import SwiftUI
+ 
+ struct CapsuleText: View {
+ var text: String
+ 
+ var body: some View {
+ Text(text)
+ .font(.largeTitle)
+ .padding()
+ .background(.blue)
+ .clipShape(.capsule)
+ }
+ }
+ 
+ struct ContentView: View {
+ var body: some View  {
+ VStack(spacing: 10) {
+ CapsuleText(text: "First")
+ .foregroundStyle(.white)
+ CapsuleText(text: "Second")
+ .foregroundStyle(.yellow)
+ }
+ }
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ - swiftUI encourages bnreaking large views into smaller reusable custom views with no meaningful performance cost
+ - issue: repeated styling code across multiple views is verbose and hard to mantain
+ - The solution: extract repeated view into its own struct. for example, a styled Text with font, padding, colors and a capsule shape can become a reusable CapsuleText view that accepts a text parameter
+ - benefit: you can bake some modifiers into the custom view while leaving others (like foregroundStyle) to be applied at the call site, giving you both reusability and flexibility
+ 
+ ** CUSTOM MODIFIERS **
+ 
+ import SwiftUI
+ 
+ struct Title: ViewModifier {
+ func body(content: Content) -> some View {
+ content
+ .font(.largeTitle)
+ .foregroundStyle(.white)
+ .padding()
+ .background(.blue)
+ .clipShape(.rect(cornerRadius: 10))
+ }
+ }
+ 
+ extension View {
+ func titleStyle() -> some View {
+ modifier(Title())
+ }
+ }
+ 
+ struct Watermark: ViewModifier {
+ var text: String
+ 
+ func body(content: Content) -> some View {
+ ZStack(alignment: .bottomTrailing) {
+ content
+ 
+ Text(text)
+ .font(.caption)
+ .foregroundColor(.white)
+ .padding(5)
+ .background(.black)
+ }
+ }
+ }
+ 
+ extension View {
+ func watermarked(with text: String) -> some View {
+ modifier(Watermark(text: text))
+ }
+ }
+ 
+ struct ContentView: View {
+ var body: some View {
+ Color.blue
+ .frame(width: 300, height: 200)
+ .watermarked(with: "Hacking with Swift")
+ }
+ }
+ 
+ #Preview {
+ ContentView()
+ }
+ 
+ - custome modifiers let you package reusable styling logic into a named, composable unit
+ - creating one: Make a struct conforming to ViewModifier and implement the body(content:) method, applying whatever modifiers you want to content and returning some View
+ - using it: Apply via .modifier(MyModifier()), but the cleaner approach is to wrap it in a View extension so it reads like a native modifier: .titleStyle()
+ 
+ - They're more powerful than plain methods: custom modifiers can create entirely new view structure (ex. wrapping content in a ZStack to add a watermark overlay) - not just chain existing modifiers
+ - key advantage over View extensions: Custom ViewModifier strcuts can hold stored properties, which plain View extensions cannot. that the primary reason to reach for a custom modifier over a simple extension metho
