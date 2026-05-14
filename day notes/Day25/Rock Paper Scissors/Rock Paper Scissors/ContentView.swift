@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var moves = ["Rock", "Paper", "Scissors"]
+    let moves = ["Rock", "Paper", "Scissors"]
     @State private var outcome = false
     @State private var currentScore = 0
     @State private var questionsAsked = 0
@@ -24,8 +24,31 @@ struct ContentView: View {
             
             HStack {
                     Text("Computer: \(moves[randomMove])")
-                    Text("Player 1:") {
-                        Button(moves
+                        Button("Rock") {
+                            // action goes here
+                        }
+                        .padding()
+                        .frame(width: 100, height: 50)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                
+                        Button("Paper") {
+                        }
+                        .padding()
+                        .frame(width: 100, height: 50)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+            
+                        Button("Scissors") {
+                        }
+                        .padding()
+                        .frame(width: 100, height: 50)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        }
                     }
                 }
             VStack {
@@ -33,8 +56,7 @@ struct ContentView: View {
                 Text("Round: \(questionsAsked)")
             }
         }
-    }
-}
+
 #Preview {
     ContentView()
 }
