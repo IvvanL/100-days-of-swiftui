@@ -38,7 +38,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 23 | Project 3 - Views and Modifiers (Part 1) | ✅ |
 | Day 24 | Project 3 - Views and Modifiers (Part 2) | ✅ |
 | Day 25 | Milestone: Projects 1-3 | ✅ |
-| Day 26 | Project 4 - BetterRest (Part 1) | ⏳ |
+| Day 26 | Project 4 - BetterRest (Part 1) | 🔄 |
 | Day 27 | Project 4 - BetterRest (Part 2) | ⏳ |
 | Day 28 | Project 4 - BetterRest (Part 3) | ⏳ |
 | Day 29 | Project 5 - Word Scramble (Part 1) | ⏳ |
