@@ -20,19 +20,19 @@ with a running score tracked throughout.
 
 ## 📸 Screenshots
 ### Light Mode
-![Light Mode](screenshots/lightmode.png)
+![Light Mode](Screenshots/lightmode.png)
 
 ### Dark Mode
-![Dark Mode](screenshots/darkmode.png)
+![Dark Mode](Screenshots/darkmode.png)
 
 ### Gameplay
-![Gameplay](screenshots/pic1.png)
+![Gameplay](Screenshots/pic1.png)
 
 ### Win/Lose Alert
-![Alert](screenshots/pic2.png)
+![Alert](Screenshots/pic2.png)
 
 ### Game Over
-![Game Over](screenshots/gameover.png)
+![Game Over](Screenshots/gameover.png)
 
 ## 🧠 What I Learned
 
