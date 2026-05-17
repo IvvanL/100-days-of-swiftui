@@ -1,4 +1,4 @@
-# Day 25 Notes - Milestone: Projects 1-3 - WIP
+# Day 25 Notes - Milestone: Projects 1-3 - Complete
 
 - RECAP:
 + Building scrolling forms that mix text with controls such as Picker, which SwiftUI turns into a beautiful table-based layout where new screens slide in with fresh choices.
@@ -139,5 +139,4 @@ CHALLENGE: challenge is to make a brain training game that challenges players to
 3. The player must then tap the correct move to win or lose the game.
 4. If they are correct they score a point; otherwise they lose a point.
 5. The game ends after 10 questions, at which point their score is shown.
-
 
