@@ -3,3 +3,4 @@
 - completed section 1 BetterRest intro
 - completed section 2 Entering numbers with Stepper
 - completed section 3 selecting dates and times with DatePicker
+- completed section 4 working with Dates

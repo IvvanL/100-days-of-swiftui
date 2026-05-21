@@ -68,3 +68,54 @@ import Cocoa
 
 // restricting dates with in: works like Stepper, and supports one-sided ranges
 
+// ** WORKING WITH DATES **
+
+//import SwiftUI
+
+//struct ContentView: View {
+//    var body: some View {
+//      Text(Date.now, format: .dateTime.day().month().year())
+//        Text(Date.now.formatted(date: .long, time: .shortened))
+//    }
+//        func exampleDates() {
+            //        var components = DateComponents()
+            //        components.hour = 8
+            //        components.minute = 0
+            //        let date = Calendar.current.date(from: components) ?? .now
+            
+//            let components = Calendar.current.dateComponents([.hour, .minute], from: .now)
+//            let hour = components.hour ?? 0
+//            let minute = components.minute ?? 0
+//        }
+//    }
+
+//#Preview {
+//    ContentView()
+//}
+
+// Key Types:
+// Date - full timestamp(year,month,day,hour,minute,timezone,etc)
+// DateComponents - lets you read/write specific parts of a date
+// Calendar.current - use for all calculations and conversions
+
+// Common Tasks:
+
+// - Default time(ex. 8am today):
+
+//var components = DateComponents()
+//components.hour = 8
+//let date = Calendar.current.date(from: components) ?? .now
+
+// - extract hour/minute from a date:
+
+// let components = Calendar.current.dateComponents([.hour, .minute], from: someDate)
+// let hour = components.hour ?? 0
+// let minute = components.minute ?? 0
+
+// - Formatting for display:
+
+//Text(Date.now, format: .dateTime.hour().minute())       // time only
+//Text(Date.now, format: .dateTime.day().month().year())  // date only
+//Text(Date.now.formatted(date: .long, time: .shortened)) // both
+
+// iOS automatically handles regional format differences (e.g. DD/MM/YY vs MM/DD/YY)
