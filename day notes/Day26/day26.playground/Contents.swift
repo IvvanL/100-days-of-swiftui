@@ -119,3 +119,7 @@ import Cocoa
 //Text(Date.now.formatted(date: .long, time: .shortened)) // both
 
 // iOS automatically handles regional format differences (e.g. DD/MM/YY vs MM/DD/YY)
+
+// ** TRAINING A MODEL WITH CREATE ML **
+
+// 
