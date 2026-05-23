@@ -122,4 +122,30 @@ import Cocoa
 
 // ** TRAINING A MODEL WITH CREATE ML **
 
-// 
+// - Create ML (for training) and Core ML (for in-app inference) make on-device machine learning accessible.
+// - the example will cover Tabular regression - finding relationships in spreadsheet-like data
+
+// Two-Step ML process
+//  + training - computer analyzes data to learn relationships (can take hours for large datasets)
+//  + Prediction - done on-device using the trained model
+
+// Steps to train a model
+// 1. Open Create ML → New Document → choose Tabular Regression
+// 2. Import your CSV as training data
+// 3. Set your target (what to predict) and features (inputs used to predict it)
+// 4. Choose an algorithm — Automatic works well for most cases
+// 5. Click Train, then review results in the Evaluation → Validation tab
+// 6. Export the finished model via the Output tab
+
+// Key metrics
+// - Root Mean Squared error (RMSE) - lower is better; the example achieved ~170 seconds of error
+// - create ML auto-splits data into training and validation sets
+
+// Model size
+// - Trained models are tiny (ex. 545 bytes from 180KB of data) because only the mathematical relationships are stored, not the raw data.
+
+// Watched youtube video on Create ML coveing:
+// 1. image recognition
+// 2. Sentiment analysis
+// 3. Regression analysis
+// link: https://www.youtube.com/watch?v=a905KIBw1hs
