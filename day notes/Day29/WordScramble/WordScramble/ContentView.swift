@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Finn", "Leia", "Luke", "Rey"]
-    
     var body: some View {
-        List {
-            Text("Static Row")
-            
-            ForEach(people, id: \.self) {
-                Text($0)
-            }
-            
-            Text("Static Row")
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello World!")
         }
+        .padding()
+    }
+    
+    func testStrings() {
+        let word = "swift"
+        let checker = UITextChecker()
+        
+        let range = NSRange(location: 0, length: word.utf16.count)
+        let mispelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0,wrap: false,language: "en")
+        
+        let allGood = mispelledRange.location == NSNotFound
     }
 }
 
