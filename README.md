@@ -43,7 +43,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 28 | Project 4 - BetterRest (Part 3) | ✅ |
 | Day 29 | Project 5 - Word Scramble (Part 1) | ✅ |
 | Day 30 | Project 5 - Word Scramble (Part 2) | ✅ |
-| Day 31 | Project 5 - Word Scramble (Part 3) | ⏳ |
+| Day 31 | Project 5 - Word Scramble (Part 3) | ✅ |
 | Day 32 | Project 6 - Animations (Part 1) | ⏳ |
 | Day 33 | Project 6 - Animations (Part 2) | ⏳ |
 | Day 34 | Project 6 - Animations (Part 3) | ⏳ |
