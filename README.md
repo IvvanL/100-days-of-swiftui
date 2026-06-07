@@ -44,8 +44,8 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 29 | Project 5 - Word Scramble (Part 1) | ✅ |
 | Day 30 | Project 5 - Word Scramble (Part 2) | ✅ |
 | Day 31 | Project 5 - Word Scramble (Part 3) | ✅ |
-| Day 32 | Project 6 - Animations (Part 1) | ⏳ |
-| Day 33 | Project 6 - Animations (Part 2) | ⏳ |
+| Day 32 | Project 6 - Animations (Part 1) | ✅ |
+| Day 33 | Project 6 - Animations (Part 2) | 🔄 |
 | Day 34 | Project 6 - Animations (Part 3) | ⏳ |
 | Day 35 | Milestone: Projects 4-6 | ⏳ |
 | Day 36 | Project 7 - iExpense (Part 1) | ⏳ |
