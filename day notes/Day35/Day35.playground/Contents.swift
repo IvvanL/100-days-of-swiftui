@@ -10,7 +10,7 @@
 // - strings are more complex than they appear - some emoji are made of multiple characters combined (ex. a thumbs up + skin modifier = one visible emoji)
 // - because of this, .count cant just count characters blindly - it has to walk through the string carefully, which is slower but always correct
 
-// First App Bundles
+// Flat App Bundles
 // - asset catalogs (images) get compiled and optimized at build time
 // - all other loose files (text,JSON, etc) get flattened into a single resource directory regardless of how they're organized in Xcode
 // - This means you cannot have two files with the same name anywhere in your project, even if they're in different folders - the build will fail
