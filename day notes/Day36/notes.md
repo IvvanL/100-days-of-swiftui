@@ -8,7 +8,7 @@ A fun, animal-themed multiplication practice app for kids built as part of Paul 
 
 | Settings | Game | Correct Answer | Game Over |
 |----------|------|----------------|-----------|
-| ![Settings](Edutainment/screenshots/state1.png) | ![Game](Edutainment/screenshots/state2.png) | ![Correct](Edutainment/screenshots/correct.png) | ![Game Over](Edutainment/screenshots/gameover.png) |
+| ![Settings](Day35/Edutainment/screenshots/state1.png) | ![Game](Day35/Edutainment/screenshots/state2.png) | ![Correct](Day35/Edutainment/screenshots/correct.png) | ![Game Over](Day35/Edutainment/screenshots/gameover.png) |
 
 ---
 
