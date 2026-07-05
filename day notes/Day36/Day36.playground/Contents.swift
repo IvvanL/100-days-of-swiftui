@@ -183,3 +183,67 @@
  
  Rule of thumb: Use @AppStorage for simple preferences, and reach for a proper database (SwiftData, CoreData) for anything more complex.
  */
+
+// ** ARCHIVING SWIFT OBJECTS WITH CODABLE **
+
+/*
+ import SwiftUI
+
+ struct User: Codable {
+     let firstName: String
+     let lastName: String
+ }
+
+ struct ContentView: View {
+     @State private var user =  User(firstName: "Taylor", lastName: "Swift")
+     
+     var body: some View {
+         Button("Save User") {
+             let encoder = JSONEncoder()
+             
+             if let data = try? encoder.encode(user) {
+                 UserDefaults.standard.set(data, forKey: "userData")
+             }
+         }
+     }
+ }
+     
+
+ #Preview {
+     ContentView()
+ }
+ */
+
+// -  Archiving Swift Objects with codable
+// - problem: @AppStorage only handles simple types (int, bool, etc)
+// - for custom swwift types, you need to work directly with UserDefaults instead
+
+// - Solution: Codable protocol
+//  + converts objects to/ffrom plain data ("archiving/unarchiving"
+//  + for simple structs (strings, ints, bools, arrays of these), just add Codable conformance -- no extra code needed:
+
+/*
+ struct User: Codable {
+     let firstName: String
+     let lastName: String
+ }
+ */
+
+// - Encoding (saving) with JSONEncoder:
+//  + converts a Codable object into JSON data
+//  + encode() can throw, so use try?
+
+/*
+ Button("Save User") {
+     let encoder = JSONEncoder()
+     if let data = try? encoder.encode(user) {
+         UserDefaults.standard.set(data, forKey: "UserData")
+     }
+ }
+ */
+
+// - Note: uses UserDefaults.standard directly, not @AppStorage, since @AppStorage doesn't support this
+
+// Decoding(loading): use JSONDecoder(same general process, reverse direction)
+
+// Key takeaway: Codeable + JSONEncoder/JSONDecoder = how you persist custom data types in UserDefaults
