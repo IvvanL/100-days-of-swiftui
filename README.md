@@ -50,7 +50,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 35 | Milestone: Projects 4-6 | ✅ |
 | Day 36 | Project 7 - iExpense (Part 1) | ✅ |
 | Day 37 | Project 7 - iExpense (Part 2) | ✅ |
-| Day 38 | Project 7 - iExpense (Part 3) | ⏳ |
+| Day 38 | Project 7 - iExpense (Part 3) | ✅ |
 | Day 39 | Project 8 - Moonshot (Part 1) | ⏳ |
 | Day 40 | Project 8 - Moonshot (Part 2) | ⏳ |
 | Day 41 | Project 8 - Moonshot (Part 3) | ⏳ |
