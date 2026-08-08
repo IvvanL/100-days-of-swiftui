@@ -170,3 +170,47 @@
 */
 
 // ** FINISHING UP WITH ONE LAST VIEW **
+
+/*
+ 
+ Final view in the app — shows astronaut details when tapping an astronaut from MissionView.
+ 
+ Steps:
+ 1. Create new SwiftUI view AstronautView with a single Astronaut property.
+ 2. Layout uses ScrollView + VStack (same pattern as MissionView): astronaut image (resizable, scaled to fit) + description text, with dark background and inline navigation title showing the astronaut's name.
+ 3. Update the preview to load astronaut data from astronauts.json and pass one astronaut (e.g., "aldrin") into the view, with dark color scheme.
+ 4. In MissionView, replace the placeholder Text("Astronaut details") in the NavigationLink with AstronautView(astronaut: crewMember.astronaut).
+ 
+ Key takeaway: This completes a three-level navigation hierarchy (all missions → one mission → one astronaut), demonstrating how NavigationStack creates an intuitive drill-down experience — iOS automatically handles transition animations, back buttons, and swipe-to-go-back gestures.
+ 
+ code for AstronautView:
+
+ import SwiftUI
+
+ struct AstronautView: View {
+     let astronaut: Astronaut
+     
+     var body: some View {
+         ScrollView {
+             VStack {
+                 Image(astronaut.id)
+                     .resizable()
+                     .scaledToFit()
+                     
+                 Text(astronaut.description)
+                     .padding()
+             }
+         }
+         .background(.darkBackground)
+         .navigationTitle(astronaut.name)
+         .navigationBarTitleDisplayMode(.inline)
+     }
+ }
+
+ #Preview {
+     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+     
+     return AstronautView(astronaut: astronauts["aldrin"]!)
+         .preferredColorScheme(.dark)
+ } 
+*/
