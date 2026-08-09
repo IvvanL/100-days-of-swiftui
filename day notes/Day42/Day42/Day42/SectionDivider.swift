@@ -5,4 +5,18 @@
 //  Created by Ivan Lara on 8/8/26.
 //
 
-import Foundation
+import SwiftUI
+
+struct SectionDivider: View {
+    var body: some View {
+        Rectangle()
+            .frame(height: 2)
+            .foregroundStyle(.lightBackground)
+            .padding(.vertical)
+    }
+}
+    
+#Preview {
+    SectionDivider()
+}
+
