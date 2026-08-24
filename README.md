@@ -60,60 +60,59 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 45 | Project 9 - Navigation (Part 3) | ✅ |
 | Day 46 | Project 9 - Navigation (Part 4) | ✅ |
 | Day 47 | Milestone: Projects 7-9 | ✅ |
-| Day 48 | Project 10 - Cupcake Corner (Part 1) | 🔄 |
-| Day 49 | Project 10 - Cupcake Corner (Part 2) | ⏳ |
-| Day 50 | Project 10 - Cupcake Corner (Part 3) | ⏳ |
-| Day 51 | Project 10 - Cupcake Corner (Part 4) | ⏳ |
-| Day 52 | Project 11 - Bookworm (Part 1) | ⏳ |
-| Day 53 | Project 11 - Bookworm (Part 2) | ⏳ |
-| Day 54 | Project 11 - Bookworm (Part 3) | ⏳ |
-| Day 55 | Project 11 - Bookworm (Part 4) | ⏳ |
-| Day 56 | Project 12 - SwiftData (Part 1) | ⏳ |
-| Day 57 | Project 12 - SwiftData (Part 2) | ⏳ |
-| Day 58 | Project 12 - SwiftData (Part 3) | ⏳ |
-| Day 59 | Milestone: Projects 10-12 | ⏳ |
-| Day 60 | Project 13 - Instafilter (Part 1) | ⏳ |
-| Day 61 | Project 13 - Instafilter (Part 2) | ⏳ |
-| Day 62 | Project 13 - Instafilter (Part 3) | ⏳ |
-| Day 63 | Project 13 - Instafilter (Part 4) | ⏳ |
-| Day 64 | Project 13 - Instafilter (Part 5) | ⏳ |
-| Day 65 | Project 14 - Bucket List (Part 1) | ⏳ |
-| Day 66 | Project 14 - Bucket List (Part 2) | ⏳ |
-| Day 67 | Project 14 - Bucket List (Part 3) | ⏳ |
-| Day 68 | Project 14 - Bucket List (Part 4) | ⏳ |
-| Day 69 | Project 14 - Bucket List (Part 5) | ⏳ |
-| Day 70 | Project 14 - Bucket List (Part 6) | ⏳ |
-| Day 71 | Milestone: Projects 13-15 | ⏳ |
-| Day 72 | Project 15 - Accessibility (Part 1) | ⏳ |
-| Day 73 | Project 15 - Accessibility (Part 2) | ⏳ |
-| Day 74 | Project 15 - Accessibility (Part 3) | ⏳ |
-| Day 75 | Project 16 - Hot Prospects (Part 1) | ⏳ |
-| Day 76 | Project 16 - Hot Prospects (Part 2) | ⏳ |
-| Day 77 | Project 16 - Hot Prospects (Part 3) | ⏳ |
-| Day 78 | Project 16 - Hot Prospects (Part 4) | ⏳ |
-| Day 79 | Project 16 - Hot Prospects (Part 5) | ⏳ |
-| Day 80 | Project 16 - Hot Prospects (Part 6) | ⏳ |
-| Day 81 | Project 16 - Hot Prospects (Part 7) | ⏳ |
-| Day 82 | Project 17 - Flashzilla (Part 1) | ⏳ |
-| Day 83 | Project 17 - Flashzilla (Part 2) | ⏳ |
-| Day 84 | Project 17 - Flashzilla (Part 3) | ⏳ |
-| Day 85 | Project 17 - Flashzilla (Part 4) | ⏳ |
-| Day 86 | Project 17 - Flashzilla (Part 5) | ⏳ |
-| Day 87 | Milestone: Projects 16-18 | ⏳ |
-| Day 88 | Project 18 - Layout and Geometry (Part 1) | ⏳ |
-| Day 89 | Project 18 - Layout and Geometry (Part 2) | ⏳ |
-| Day 90 | Project 18 - Layout and Geometry (Part 3) | ⏳ |
-| Day 91 | Project 19 - SnowSeeker (Part 1) | ⏳ |
-| Day 92 | Project 19 - SnowSeeker (Part 2) | ⏳ |
-| Day 93 | Project 19 - SnowSeeker (Part 3) | ⏳ |
-| Day 94 | Project 19 - SnowSeeker (Part 4) | ⏳ |
-| Day 95 | Milestone: Projects 19-21 | ⏳ |
-| Day 96 | Wrap Up (Part 1) | ⏳ |
-| Day 97 | Wrap Up (Part 2) | ⏳ |
-| Day 98 | Wrap Up (Part 3) | ⏳ |
-| Day 99 | Wrap Up (Part 4) | ⏳ |
-| Day 100 | Final Wrap Up 🎉 | ⏳ |
-
+| Day 48 | Expanding your horizons | ✅ |
+| Day 49 | Project 10 - Cupcake Corner (Part 1) | 🔄 |
+| Day 50 | Project 10 - Cupcake Corner (Part 2) | ⏳ |
+| Day 51 | Project 10 - Cupcake Corner (Part 3) | ⏳ |
+| Day 52 | Project 10 - Cupcake Corner (Part 4) | ⏳ |
+| Day 53 | Project 11 - Bookworm (Part 1) | ⏳ |
+| Day 54 | Project 11 - Bookworm (Part 2) | ⏳ |
+| Day 55 | Project 11 - Bookworm (Part 3) | ⏳ |
+| Day 56 | Project 11 - Bookworm (Part 4) | ⏳ |
+| Day 57 | Project 12 - Core Data (Part 1) | ⏳ |
+| Day 58 | Project 12 - Core Data (Part 2) | ⏳ |
+| Day 59 | Project 12 - Core Data (Part 3) | ⏳ |
+| Day 60 | Milestone: Projects 10-12 | ⏳ |
+| Day 61 | Time for Core Data / SwiftData | ⏳ |
+| Day 62 | Project 13 - Instafilter (Part 1) | ⏳ |
+| Day 63 | Project 13 - Instafilter (Part 2) | ⏳ |
+| Day 64 | Project 13 - Instafilter (Part 3) | ⏳ |
+| Day 65 | Project 13 - Instafilter (Part 4) | ⏳ |
+| Day 66 | Project 13 - Instafilter (Part 5) | ⏳ |
+| Day 67 | Project 13 - Instafilter (Part 6) | ⏳ |
+| Day 68 | Project 14 - Bucket List (Part 1) | ⏳ |
+| Day 69 | Project 14 - Bucket List (Part 2) | ⏳ |
+| Day 70 | Project 14 - Bucket List (Part 3) | ⏳ |
+| Day 71 | Project 14 - Bucket List (Part 4) | ⏳ |
+| Day 72 | Project 14 - Bucket List (Part 5) | ⏳ |
+| Day 73 | Project 14 - Bucket List (Part 6) | ⏳ |
+| Day 74 | Project 15 - Accessibility (Part 1) | ⏳ |
+| Day 75 | Project 15 - Accessibility (Part 2) | ⏳ |
+| Day 76 | Project 15 - Accessibility (Part 3) | ⏳ |
+| Day 77 | Milestone: Projects 13-15 | ⏳ |
+| Day 78 | Time for MapKit | ⏳ |
+| Day 79 | Project 16 - Hot Prospects (Part 1) | ⏳ |
+| Day 80 | Project 16 - Hot Prospects (Part 2) | ⏳ |
+| Day 81 | Project 16 - Hot Prospects (Part 3) | ⏳ |
+| Day 82 | Project 16 - Hot Prospects (Part 4) | ⏳ |
+| Day 83 | Project 16 - Hot Prospects (Part 5) | ⏳ |
+| Day 84 | Project 16 - Hot Prospects (Part 6) | ⏳ |
+| Day 85 | Project 16 - Hot Prospects (Part 7) | ⏳ |
+| Day 86 | Project 17 - Flashzilla (Part 1) | ⏳ |
+| Day 87 | Project 17 - Flashzilla (Part 2) | ⏳ |
+| Day 88 | Project 17 - Flashzilla (Part 3) | ⏳ |
+| Day 89 | Project 17 - Flashzilla (Part 4) | ⏳ |
+| Day 90 | Project 17 - Flashzilla (Part 5) | ⏳ |
+| Day 91 | Project 17 - Flashzilla (Part 6) | ⏳ |
+| Day 92 | Project 18 - Layout and Geometry (Part 1) | ⏳ |
+| Day 93 | Project 18 - Layout and Geometry (Part 2) | ⏳ |
+| Day 94 | Project 18 - Layout and Geometry (Part 3) | ⏳ |
+| Day 95 | Milestone: Projects 16-18 | ⏳ |
+| Day 96 | Project 19 - SnowSeeker (Part 1) | ⏳ |
+| Day 97 | Project 19 - SnowSeeker (Part 2) | ⏳ |
+| Day 98 | Project 19 - SnowSeeker (Part 3) | ⏳ |
+| Day 99 | Project 19 - SnowSeeker (Part 4) | ⏳ |
+| Day 100 | Final Exam 🎉 | ⏳ |
 ---
 
 ## 🗂 Repo Structure
