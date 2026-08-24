@@ -59,8 +59,8 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 44 | Project 9 - Navigation (Part 2) | ✅ |
 | Day 45 | Project 9 - Navigation (Part 3) | ✅ |
 | Day 46 | Project 9 - Navigation (Part 4) | ✅ |
-| Day 47 | Milestone: Projects 7-9 | ⏳ |
-| Day 48 | Project 10 - Cupcake Corner (Part 1) | ⏳ |
+| Day 47 | Milestone: Projects 7-9 | ✅ |
+| Day 48 | Project 10 - Cupcake Corner (Part 1) | 🔄 |
 | Day 49 | Project 10 - Cupcake Corner (Part 2) | ⏳ |
 | Day 50 | Project 10 - Cupcake Corner (Part 3) | ⏳ |
 | Day 51 | Project 10 - Cupcake Corner (Part 4) | ⏳ |
