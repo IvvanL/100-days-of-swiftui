@@ -66,7 +66,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 51 | Project 10 - Cupcake Corner (Part 3) | ✅ |
 | Day 52 | Project 10 - Cupcake Corner (Part 4) | ✅ |
 | Day 53 | Project 11 - Bookworm (Part 1) | ✅ |
-| Day 54 | Project 11 - Bookworm (Part 2) | 🔄 |
+| Day 54 | Project 11 - Bookworm (Part 2) | ✅ |
 | Day 55 | Project 11 - Bookworm (Part 3) | ⏳ |
 | Day 56 | Project 11 - Bookworm (Part 4) | ⏳ |
 | Day 57 | Project 12 - Core Data (Part 1) | ⏳ |
