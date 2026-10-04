@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D871EF563073115E000BF1E2 /* ExpensesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871EF553073115E000BF1E2 /* ExpensesListView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D8F0CA9D3071DD4F00916B1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D871EF553073115E000BF1E2 /* ExpensesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpensesListView.swift; path = Day59/ExpensesListView.swift; sourceTree = "<group>"; };
 		D8F0CA8F3071DD4E00916B1A /* Day59.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Day59.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F0CA9C3071DD4F00916B1A /* Day59Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day59Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F0CAA63071DD4F00916B1A /* Day59UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day59UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		D8F0CA863071DD4E00916B1A = {
 			isa = PBXGroup;
 			children = (
+				D871EF553073115E000BF1E2 /* ExpensesListView.swift */,
 				D8F0CA913071DD4E00916B1A /* Day59 */,
 				D8F0CA9F3071DD4F00916B1A /* Day59Tests */,
 				D8F0CAA93071DD4F00916B1A /* Day59UITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D871EF563073115E000BF1E2 /* ExpensesListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,74 +33,28 @@ class ExpenseItem {
 }
 
 struct ContentView: View {
-    @Query var expenses: [ExpenseItem]
-    @Environment(\.modelContext) var modelContext
     
     @State private var showingAddExpense = false
+    @State private var sortOrder = [SortDescriptor(\ExpenseItem.name)]
     
     var body: some View {
         NavigationStack {
-            List {
-                Section("Personal") {
-                    ForEach(expenses.filter { $0.type == "Personal"}) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                
-                                Text(item.type)
-                            }
-                            
-                            Spacer()
-                            
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
-                                .foregroundStyle(item.amountColor)
-                        }
-                    }
-                    .onDelete { offsets in
-                        removeItems(at: offsets, from: "Personal")
-                    }
-                }
-                
-                Section("Business") {
-                    ForEach(expenses.filter { $0.type == "Business" }) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                
-                                Text(item.type)
-                            }
-                            
-                            Spacer()
-                            
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
-                                .foregroundStyle(item.amountColor)
-                        }
-                    }
-                    .onDelete { offsets in
-                        removeItems(at: offsets, from: "Business")
-                    }
-                }
-            }
+            ExpensesListView(sortOrder: sortOrder)
             .navigationTitle("iExpense")
             .toolbar {
                 Button("Add Expense", systemImage: "plus") {
                     showingAddExpense = true
                 }
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker(selection: $sortOrder, label: Text("Sort by")) {
+                        Text("Name").tag([SortDescriptor(\ExpenseItem.name)])
+                        Text("Amount").tag([SortDescriptor(\ExpenseItem.amount)])
+                    }
+                }
             }
             .sheet(isPresented: $showingAddExpense) {
                 AddView()
             }
-        }
-    }
-    
-    func removeItems(at offsets: IndexSet, from type: String) {
-        let filteredItems = expenses.filter { $0.type == type}
-        let itemsToDelete = offsets.map { filteredItems[$0] }
-        
-        for item in itemsToDelete {
-            modelContext.delete(item)
         }
     }
 }

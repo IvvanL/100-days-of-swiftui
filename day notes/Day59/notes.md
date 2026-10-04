@@ -2,8 +2,8 @@
 
 Three challenges that build on project 7 (iExpense):
 
-- [x] **Challenge 1:** Upgrade to SwiftData [COMPLETED]
-- [ ] **Challenge 2:** Add a customizable sort order (by name or by amount)
+- [x] **Challenge 1:** Upgrade to SwiftData [Completed]
+- [x] **Challenge 2:** Add a customizable sort order (by name or by amount) [completed]
 - [ ] **Challenge 3:** Add a filter option (all, just Personal, just Business)
 
 ---
@@ -47,7 +47,7 @@ WindowGroup {
 
 It goes on the scene so every view underneath can reach the same storage. The argument is the `@Model` type with `.self` on the end.
 
-**3. Read and delete in `ContentView`**
+**3. Read and delete**
 
 - `@Query var expenses: [ExpenseItem]` fetches the data and keeps the view updated. There's no `= ...`, because `@Query` fills it in.
 - `@Environment(\.modelContext) var modelContext` is how you write and delete.
@@ -65,28 +65,67 @@ It goes on the scene so every view underneath can reach the same storage. The ar
 
 Any preview of a view that uses SwiftData needs its own container. `inMemory: true` keeps previews from touching real data.
 
+### What I learned
+
+- `@Model` only works on **classes**, and it replaces both `Identifiable` and `Codable` for stored data.
+- Inside an `init`, use `self.property = parameter`. Writing `var name = name` just creates a throwaway local variable.
+- `.modelContainer(for:)` goes on the scene, and it takes the **model type** (`ExpenseItem.self`), not the view or the project name.
+- `@Query` supplies its own value, so there is no `=` after it.
+- `modelContext.delete(_:)` takes **one** object, so use a `for` loop for several.
+- A file needs `import SwiftData` if it uses `modelContext.insert` or `.modelContainer`, even if it never mentions `@Model`.
+- Previews of SwiftData views need `.modelContainer(for:inMemory:)`.
+- Old data saved in `UserDefaults` doesn't carry over, which is expected for this challenge.
+- Stale Xcode errors can show up after big changes. **Clean Build Folder** (Cmd+Shift+K) then build (Cmd+B) fixes it.
+- Select all and press **Ctrl+I** to re-indent. Misaligned code usually points at a brace problem.
+
 ---
 
-## Final code
+## Challenge 2: Sort order (by name or amount)
 
-### `Day59App.swift`
+### Goal
+
+Let the user switch between sorting by name and sorting by amount while the app is running.
+
+### The problem
+
+`@Query(sort: ...)` is fixed when a view is created, so a `@Query` sitting in `ContentView` can't react to a sort choice that changes later.
+
+### The solution
+
+1. `ContentView` holds the sort choice in `@State` and shows a menu to change it.
+2. The list moves into its own view, `ExpensesListView`, which **receives the sort order as an input**.
+3. That view's `init` builds its own query with that sort. When `sortOrder` changes, SwiftUI recreates the view, which builds a fresh query.
+
+### Steps
+
+**1. Hold the choice and add a control**
+
+- One `@State` property holds the current sort: `@State private var sortOrder = [SortDescriptor(\ExpenseItem.name)]`.
+- A `Menu` containing a `Picker` goes in the toolbar. Each option has a `.tag` holding an array of sort descriptors.
+- The tag's type must match the type of `sortOrder`, which is an **array** of `SortDescriptor`.
+
+**2. Move the list into a new view**
+
+- Create `ExpensesListView` with the `@Query`, the `modelContext`, the `List`, and `removeItems`.
+- `ContentView` keeps only `showingAddExpense`, `sortOrder`, the navigation, the toolbar, and the sheet.
+
+**3. Build the query in `init`**
 
 ```swift
-import SwiftData
-import SwiftUI
-
-@main
-struct Day59App: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-        .modelContainer(for: ExpenseItem.self)
-    }
+init(sortOrder: [SortDescriptor<ExpenseItem>]) {
+    _expenses = Query(sort: sortOrder)
 }
 ```
 
-### `ContentView.swift`
+**4. Connect them**
+
+`ContentView` creates `ExpensesListView(sortOrder: sortOrder)` and the toolbar, title, and sheet attach to it.
+
+### Final code
+
+`Day59App.swift` and `AddView.swift` are unchanged from Challenge 1.
+
+#### `ContentView.swift`
 
 ```swift
 import SwiftData
@@ -117,64 +156,97 @@ class ExpenseItem {
 }
 
 struct ContentView: View {
-    @Query var expenses: [ExpenseItem]
-    @Environment(\.modelContext) var modelContext
-
     @State private var showingAddExpense = false
+    @State private var sortOrder = [SortDescriptor(\ExpenseItem.name)]
 
     var body: some View {
         NavigationStack {
-            List {
-                Section("Personal") {
-                    ForEach(expenses.filter { $0.type == "Personal" }) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
+            ExpensesListView(sortOrder: sortOrder)
+                .navigationTitle("iExpense")
+                .toolbar {
+                    Button("Add Expense", systemImage: "plus") {
+                        showingAddExpense = true
+                    }
 
-                                Text(item.type)
-                            }
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker("Sort by", selection: $sortOrder) {
+                            Text("Name")
+                                .tag([SortDescriptor(\ExpenseItem.name)])
 
-                            Spacer()
-
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(item.amountColor)
+                            Text("Amount")
+                                .tag([SortDescriptor(\ExpenseItem.amount)])
                         }
                     }
-                    .onDelete { offsets in
-                        removeItems(at: offsets, from: "Personal")
-                    }
                 }
+                .sheet(isPresented: $showingAddExpense) {
+                    AddView()
+                }
+        }
+    }
+}
 
-                Section("Business") {
-                    ForEach(expenses.filter { $0.type == "Business" }) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
+#Preview {
+    ContentView()
+        .modelContainer(for: ExpenseItem.self, inMemory: true)
+}
+```
 
-                                Text(item.type)
-                            }
+#### `ExpensesListView.swift`
 
-                            Spacer()
+```swift
+import SwiftData
+import SwiftUI
 
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(item.amountColor)
+struct ExpensesListView: View {
+    @Query var expenses: [ExpenseItem]
+    @Environment(\.modelContext) var modelContext
+
+    init(sortOrder: [SortDescriptor<ExpenseItem>]) {
+        _expenses = Query(sort: sortOrder)
+    }
+
+    var body: some View {
+        List {
+            Section("Personal") {
+                ForEach(expenses.filter { $0.type == "Personal" }) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.headline)
+
+                            Text(item.type)
                         }
-                    }
-                    .onDelete { offsets in
-                        removeItems(at: offsets, from: "Business")
+
+                        Spacer()
+
+                        Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            .foregroundStyle(item.amountColor)
                     }
                 }
-            }
-            .navigationTitle("iExpense")
-            .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
+                .onDelete { offsets in
+                    removeItems(at: offsets, from: "Personal")
                 }
             }
-            .sheet(isPresented: $showingAddExpense) {
-                AddView()
+
+            Section("Business") {
+                ForEach(expenses.filter { $0.type == "Business" }) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.headline)
+
+                            Text(item.type)
+                        }
+
+                        Spacer()
+
+                        Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            .foregroundStyle(item.amountColor)
+                    }
+                }
+                .onDelete { offsets in
+                    removeItems(at: offsets, from: "Business")
+                }
             }
         }
     }
@@ -190,77 +262,24 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ExpensesListView(sortOrder: [SortDescriptor(\ExpenseItem.name)])
         .modelContainer(for: ExpenseItem.self, inMemory: true)
 }
 ```
 
-### `AddView.swift`
+### What I learned
 
-```swift
-import SwiftData
-import SwiftUI
-
-struct AddView: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
-
-    @State private var name = ""
-    @State private var type = "Personal"
-    @State private var amount = 0.0
-
-    let types = ["Business", "Personal"]
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                TextField("Name", text: $name)
-
-                Picker("Type", selection: $type) {
-                    ForEach(types, id: \.self) {
-                        Text($0)
-                    }
-                }
-
-                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                    .keyboardType(.decimalPad)
-            }
-            .navigationTitle("Add new expense")
-            .toolbar {
-                Button("Save") {
-                    let item = ExpenseItem(name: name, type: type, amount: amount)
-                    modelContext.insert(item)
-                    dismiss()
-                }
-            }
-        }
-    }
-}
-
-#Preview {
-    AddView()
-        .modelContainer(for: ExpenseItem.self, inMemory: true)
-}
-```
-
----
-
-## What I learned
-
-- `@Model` only works on **classes**, and it replaces both `Identifiable` and `Codable` for stored data.
-- Inside an `init`, use `self.property = parameter`. Writing `var name = name` just creates a throwaway local variable.
-- `.modelContainer(for:)` goes on the scene, and it takes the **model type** (`ExpenseItem.self`), not the view or the project name.
-- `@Query` supplies its own value, so there is no `=` after it.
-- `modelContext.delete(_:)` takes **one** object, so use a `for` loop for several.
-- A file needs `import SwiftData` if it uses `modelContext.insert` or `.modelContainer`, even if it never mentions `@Model`.
-- Previews of SwiftData views need `.modelContainer(for:inMemory:)`.
-- Old data saved in `UserDefaults` doesn't carry over, which is expected for this challenge.
-- Stale Xcode errors can show up after big changes. **Clean Build Folder** (Cmd+Shift+K) then build (Cmd+B) fixes it.
-- Select all and press **Ctrl+I** to re-indent. Misaligned code usually points at a brace problem.
+- A `@Query`'s sort is set when the view is created. To change it at runtime, put the query in a **smaller view that takes the sort as a parameter**, so SwiftUI rebuilds that view when the choice changes.
+- `@Query var expenses` creates a hidden property called `_expenses`. `expenses` is the **array of results**. `_expenses` is the **`Query` itself**, which does the fetching and sorting. In an `init`, assign to `_expenses` to change how the data is fetched.
+- The init parameter type is `[SortDescriptor<ExpenseItem>]`.
+- `\ExpenseItem.self` means the whole object, not a property, so it has nothing to sort by.
+- A `Picker`'s `.tag` values must be the **same type** as its `selection`. Here that's an array of `SortDescriptor`.
+- A property can only be declared once. `sortOrder` is one box holding the **current** choice, and the picker swaps what's in it.
+- When a view moves, everything that uses its `@Query` or `modelContext` has to move with it, including helper functions like `removeItems`.
+- Previews of views with a required `init` parameter need that argument, plus a model container.
 
 ---
 
 ## Up next
 
-### Challenge 2: Sort order
-
+### Challenge 3: Filter
