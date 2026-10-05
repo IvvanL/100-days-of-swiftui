@@ -36,25 +36,34 @@ struct ContentView: View {
     
     @State private var showingAddExpense = false
     @State private var sortOrder = [SortDescriptor(\ExpenseItem.name)]
+    @State private var filter = "All"
     
     var body: some View {
         NavigationStack {
-            ExpensesListView(sortOrder: sortOrder)
-            .navigationTitle("iExpense")
-            .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
-                }
-                Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                    Picker(selection: $sortOrder, label: Text("Sort by")) {
-                        Text("Name").tag([SortDescriptor(\ExpenseItem.name)])
-                        Text("Amount").tag([SortDescriptor(\ExpenseItem.amount)])
+            ExpensesListView(sortOrder: sortOrder, filter: filter)
+                .navigationTitle("iExpense")
+                .toolbar {
+                    Button("Add Expense", systemImage: "plus") {
+                        showingAddExpense = true
+                    }
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker(selection: $sortOrder, label: Text("Sort by")) {
+                            Text("Name").tag([SortDescriptor(\ExpenseItem.name)])
+                            Text("Amount").tag([SortDescriptor(\ExpenseItem.amount)])
+                        }
+                    }
+                    
+                    Menu("Sort", systemImage: "line.3.horizontal.decrease.circle") {
+                        Picker(selection: $filter, label: Text("Filter by")) {
+                            Text("All").tag("All")
+                            Text("Business").tag("Business")
+                            Text("Personal").tag("Personal")
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $showingAddExpense) {
-                AddView()
-            }
+        }
+        .sheet(isPresented: $showingAddExpense) {
+            AddView()
         }
     }
 }

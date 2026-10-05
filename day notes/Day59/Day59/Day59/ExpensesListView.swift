@@ -13,52 +13,66 @@ struct ExpensesListView: View {
     @Query var expenses: [ExpenseItem]
     @Environment(\.modelContext) var modelContext
     
-    init(sortOrder: [SortDescriptor<ExpenseItem>]) {
-        _expenses = Query(sort: sortOrder)
+    init(sortOrder: [SortDescriptor<ExpenseItem>], filter: String) {
+        _expenses = Query(filter: #Predicate<ExpenseItem> {
+            filter == "All" || $0.type == filter
+        }, sort: sortOrder)
+    }
+    
+    var personalExpenses: [ExpenseItem] {
+        expenses.filter { $0.type == "Personal" }
+    }
+    
+    var businessExpenses: [ExpenseItem] {
+        expenses.filter { $0.type == "Business" }
     }
     
     var body: some View {
         List {
-            Section("Personal") {
-                ForEach(expenses.filter { $0.type == "Personal"}) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
+            if !personalExpenses.isEmpty {
+                Section("Personal") {
+                    ForEach(personalExpenses) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                
+                                Text(item.type)
+                            }
                             
-                            Text(item.type)
+                            Spacer()
+                            
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
+                                .foregroundStyle(item.amountColor)
                         }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
-                            .foregroundStyle(item.amountColor)
                     }
-                }
-                .onDelete { offsets in
-                    removeItems(at: offsets, from: "Personal")
+                    .onDelete { offsets in
+                        removeItems(at: offsets, from: "Personal")
+                    }
                 }
             }
             
-            Section("Business") {
-                ForEach(expenses.filter { $0.type == "Business" }) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
+            if !businessExpenses.isEmpty {
+                Section("Business") {
+                    ForEach(businessExpenses) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                
+                                Text(item.type)
+                            }
                             
-                            Text(item.type)
+                            Spacer()
+                            
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
+                                .foregroundStyle(item.amountColor)
                         }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")) //changed to local preffered currency not automatically USD
-                            .foregroundStyle(item.amountColor)
                     }
-                }
-                
-                .onDelete { offsets in
-                    removeItems(at: offsets, from: "Business")
+                    
+                    .onDelete { offsets in
+                        removeItems(at: offsets, from: "Business")
+                    }
                 }
             }
         }
@@ -74,6 +88,6 @@ struct ExpensesListView: View {
     }
 }
 #Preview {
-    ExpensesListView(sortOrder: [SortDescriptor(\ExpenseItem.name)])
+    ExpensesListView(sortOrder: [SortDescriptor(\ExpenseItem.name)], filter: "All")
         .modelContainer(for: ExpenseItem.self, inMemory: true)
 }
