@@ -71,7 +71,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 56 | Project 11 - Bookworm (Part 4) | ✅  |
 | Day 57 | Project 12 - Core Data (Part 1) | ✅ |
 | Day 58 | Project 12 - Core Data (Part 2) | ✅ |
-| Day 59 | Project 12 - Core Data (Part 3) | 🔄 |
+| Day 59 | Project 12 - Core Data (Part 3) | ✅ |
 | Day 60 | Milestone: Projects 10-12 | ⏳ |
 | Day 61 | Time for Core Data / SwiftData | ⏳ |
 | Day 62 | Project 13 - Instafilter (Part 1) | ⏳ |
