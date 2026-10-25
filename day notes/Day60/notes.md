@@ -11,13 +11,13 @@ Complete. All required parts of the challenge are done.
 ## Screenshots
 
 ### Home (user list)
-![Home screen showing the list of users](screenshots/Home.png)
+![Home screen showing the list of users](Day60/Day60/Home.png)
 
 ### Detail view
-![Detail view for a user](screenshots/DetailView.png)
+![Detail view for a user](Day60/Day60/DetailView.png)
 
 ### Detail view (continued)
-![Detail view scrolled to tags and friends](screenshots/DetailView1.png)
+![Detail view scrolled to tags and friends](Day60/Day60/DetailView1.png)
 
 Image files: [Home.png](Day60/Day60/Home.png) | [DetailView.png](Day60/Day60/DetailView.png) | [DetailView1.png](Day60/Day60/DetailView1.png)
 
