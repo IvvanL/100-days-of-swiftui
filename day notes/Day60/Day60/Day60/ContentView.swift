@@ -37,26 +37,28 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
         NavigationStack {
             List(users) { user in
-                HStack {
-                    Text(user.name)
-                    
-                    Spacer()
-                    
-                    Text(user.isActive ? "Active" : "Inactive")
+                NavigationLink {
+                    DetailView(user: user)
+                } label: {
+                    HStack {
+                        Text(user.name)
+                        
+                        Spacer()
+                        
+                        Text(user.isActive ? "Active" : "Inactive")
                             .foregroundStyle(user.isActive ? .green : .red)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 4)
+                            .background(user.isActive ? Color.green.opacity(0.1) : Color.red.opacity(0.1), in:.capsule)
+                    }
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 4)
-                .background(user.isActive ? .green.opacity(0.1) : Color.red.opacity(0.1), in:.capsule)
             }
-            
             .navigationTitle("Friendface")
-        }
-        .task {
-            await loadData()
+            .task {
+                await loadData()
+            }
         }
     }
 }
