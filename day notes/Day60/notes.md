@@ -19,7 +19,7 @@ Complete. All required parts of the challenge are done.
 ### Detail view (continued)
 ![Detail view scrolled to tags and friends](screenshots/DetailView1.png)
 
-Image files: [Home.png](screenshots/Home.png) | [DetailView.png](screenshots/DetailView.png) | [DetailView1.png](screenshots/DetailView1.png)
+Image files: [Home.png](Day60/Day60/Home.png) | [DetailView.png](Day60/Day60/DetailView.png) | [DetailView1.png](Day60/Day60/DetailView1.png)
 
 ## Challenge requirements
 
