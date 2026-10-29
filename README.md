@@ -74,7 +74,7 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 59 | Project 12 - Core Data (Part 3) | ✅ |
 | Day 60 | Milestone: Projects 10-12 | ✅ |
 | Day 61 | Time for Core Data / SwiftData | ✅ |
-| Day 62 | Project 13 - Instafilter (Part 1) | ⏳ |
+| Day 62 | Project 13 - Instafilter (Part 1) | ✅ |
 | Day 63 | Project 13 - Instafilter (Part 2) | ⏳ |
 | Day 64 | Project 13 - Instafilter (Part 3) | ⏳ |
 | Day 65 | Project 13 - Instafilter (Part 4) | ⏳ |
