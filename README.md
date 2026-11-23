@@ -78,8 +78,8 @@ My progress through [Paul Hudson's 100 Days of SwiftUI](https://www.hackingwiths
 | Day 63 | Project 13 - Instafilter (Part 2) | ✅ |
 | Day 64 | Project 13 - Instafilter (Part 3) | ✅ |
 | Day 65 | Project 13 - Instafilter (Part 4) | ✅ |
-| Day 66 | Project 13 - Instafilter (Part 5) | 🔄 |
-| Day 67 | Project 13 - Instafilter (Part 6) | ⏳ |
+| Day 66 | Project 13 - Instafilter (Part 5) | ✅ |
+| Day 67 | Project 13 - Instafilter (Part 6) | 🔄 |
 | Day 68 | Project 14 - Bucket List (Part 1) | ⏳ |
 | Day 69 | Project 14 - Bucket List (Part 2) | ⏳ |
 | Day 70 | Project 14 - Bucket List (Part 3) | ⏳ |
